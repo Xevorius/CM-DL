@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,6 +31,13 @@ ALLOWED_HOSTS = ['Xevorius.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
+    'collection.apps.CollectionConfig',
+    'movies.apps.MoviesConfig',
+
+    'crispy_forms',
+    'import_export',
+    'bootstrap_daterangepicker',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -68,7 +75,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Content_Recommender.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -109,13 +115,14 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -128,3 +135,11 @@ MEDIA_ROOT = '/home/Xevorius/Content_Recommender/media'
 MEDIA_URL = '/media/'
 STATIC_ROOT = '/home/Xevorius/Content_Recommender/static'
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'movie-list'
+
+LOGOUT_REDIRECT_URL = 'movie-list'
+
+LOGIN_URL = 'login'

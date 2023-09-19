@@ -1,0 +1,12 @@
+{% extends "collection/base.html" %}
+{% block content %}
+<div class="container text-center">
+    <div class="text-white border-warning bg-dark mb-3" style="padding: 0px;">
+      <h5 class="card-header">{{ object.primaryTitle }} <span class="badge badge-warning">{{ object.genres }}</span></h5>
+      <div class="card-body">
+        <p class="card-text">Release year: {{ object.startYear }}<br>Length: {{ object.runtimeMinutes }} minutes<br>Type: {{ object.titleType  }}<br>18+: {{ object.isAdult }}</p>
+      </div>
+    </div>
+    <br>
+</div>
+{% endblock content %}

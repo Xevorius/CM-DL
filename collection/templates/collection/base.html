@@ -1,0 +1,108 @@
+<!--
+base.html: Contains all the html for all the elements that stay the same through all the apps. The HTML of the other
+apps will be loaded on top of this base HTML
+
+
+__author__ = "Tim Rietdijk"
+__email__ = "tim.is@live.nl"
+__status__ = "Development"-->
+
+{% load static %}
+<html lang="en">
+<head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Movie recommender</title>
+    {% endif %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!--Since this HTML will be loaded no matter what webpage you are on, all the imports for the whole app can be loaded
+    here:-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'collection/main.css' %}">
+    <script src="{% static 'collection/main.js' %}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet"/>
+    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.js"></script>
+    <script type=”text/javascript” src=”https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js”></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+            defer=""></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css"
+          type="text/css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.40/moment-timezone.js" integrity="sha512-ZYGcBq8gR6/j13oF96g+/eyt/8y0V+Ylnx8M0KK7lmWIN+ZIdp/+msOCStyvNv4ev2TPhAwi6RB86/AL6iNL3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body style="background-color: #1f2024">
+<section class="is-fullheight" style="overflow: hidden">
+    <nav class="navbar navbar-dark navbar-expand-md bg-dark">
+        <div class="container">
+            <a class="navbar-brand mr-4" href="{% url 'movie-list' %}">Movie recommender</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+<!--                    <a class="nav-item nav-link" href="#">NASA/MRMS</a>-->
+                </div>
+                <div class="navbar-nav">
+                    {% if user.is_authenticated %}
+                    <div class="btn-group">
+                        <a role="button" class=""
+                           style="padding: 0px; background: transparent; border: none !important;"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle article-img" style="height: 40px; width: 40px;"
+                                 src="{{ user.profile.image.url }}">
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                            {% if user.is_superuser %}
+                            <a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a>
+                            {% endif %}
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" style="z-index: 5;">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float:left;">
+            <span aria-hidden="true" style="float:left;">&times;</span>
+        </button>
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <br>
+    {% block content %}
+    {% endblock %}
+</section>
+</body>
+</html>

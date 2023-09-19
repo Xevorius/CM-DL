@@ -1,0 +1,377 @@
+body {
+  background: #fafafa;
+  color: #333333;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+ul {
+  margin: 0;
+}
+
+.bg-steel {
+  background-color: #5f788a;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+.rounded-rect {
+background: white;
+border-radius: 10px;
+box-shadow: 0 0 50px -25px black;
+}
+
+.flex-center {
+position: absolute;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.flex-center.left {
+left: 0px;
+}
+
+.flex-center.right {
+right: 0px;
+}
+
+.sidebar-content {
+position: absolute;
+width: 95%;
+font-size: 32px;
+color: gray;
+}
+
+.sidebar-toggle {
+position: absolute;
+width: 1.3em;
+height: 1.3em;
+overflow: hidden;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.sidebar-toggle.left {
+right: -1.5em;
+}
+
+.sidebar-toggle.right {
+left: -1.5em;
+}
+
+.sidebar-toggle:hover {
+color: #0aa1cf;
+cursor: pointer;
+}
+
+.sidebar {
+transition: transform 1s;
+z-index: 1;
+width: 600px;
+height: 100%;
+}
+
+/*
+The sidebar styling has them "expanded" by default, we use CSS transforms to push them offscreen
+The toggleSidebar() function removes this class from the element in order to expand it.
+*/
+.left.collapsed {
+transform: translateX(-585px);
+}
+
+.right.collapsed {
+transform: translateX(585px);
+}
+
+#menu {
+background: #fff;
+position: absolute;
+z-index: 1;
+bottom: 10px;
+right: 10px;
+border-radius: 3px;
+width: 120px;
+border: 1px solid rgba(0, 0, 0, 0.4);
+font-family: 'Open Sans', sans-serif;
+}
+
+#menu a {
+font-size: 13px;
+color: #404040;
+display: block;
+margin: 0;
+padding: 0;
+padding: 10px;
+text-decoration: none;
+border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+text-align: center;
+}
+
+#menu a:last-child {
+border: none;
+}
+
+#menu a:hover {
+background-color: #f8f8f8;
+color: #404040;
+}
+
+#menu a.active {
+background-color: #3887be;
+color: #ffffff;
+}
+
+#menu a.active:hover {
+background: #3074a4;
+}
+
+.rounded-rect {
+background: white;
+border-radius: 10px;
+box-shadow: 0 0 50px -25px black;
+}
+
+.flex-center {
+position: absolute;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.flex-center.left {
+left: 0px;
+}
+
+.flex-center.right {
+right: 0px;
+}
+
+.sidebar-content {
+position: absolute;
+width: 95%;
+font-size: 32px;
+color: gray;
+}
+
+.sidebar-toggle {
+position: absolute;
+width: 1.3em;
+height: 1.3em;
+overflow: hidden;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.sidebar-toggle.left {
+right: -1.5em;
+}
+
+.sidebar-toggle.right {
+left: -1.5em;
+}
+
+.sidebar-toggle:hover {
+color: #0aa1cf;
+cursor: pointer;
+}
+
+.sidebar {
+transition: transform 1s;
+z-index: 1;
+width: 600px;
+height: 100%;
+}
+
+.left.collapsed {
+transform: translateX(-585px);
+}
+
+.right.collapsed {
+transform: translateX(585px);
+}
+
+#menu {
+background: #fff;
+position: absolute;
+z-index: 1;
+bottom: 10px;
+right: 10px;
+border-radius: 3px;
+width: 120px;
+border: 1px solid rgba(0, 0, 0, 0.4);
+font-family: 'Open Sans', sans-serif;
+}
+
+#menu a {
+font-size: 13px;
+color: #404040;
+display: block;
+margin: 0;
+padding: 0;
+padding: 10px;
+text-decoration: none;
+border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+text-align: center;
+}
+
+#menu a:last-child {
+border: none;
+}
+
+#menu a:hover {
+background-color: #f8f8f8;
+color: #404040;
+}
+
+#menu a.active {
+background-color: #3887be;
+color: #ffffff;
+}
+
+#menu a.active:hover {
+background: #3074a4;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+.row.content {height: 1000px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+  background-color: #f1f1f1;
+  height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height: auto;}
+}
+
+.card:hover{
+     transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+

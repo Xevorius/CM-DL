@@ -1,0 +1,50 @@
+{% extends "collection/base.html" %}
+{% block content %}
+
+<div class="input-group mb-3 text-white border-warning bg-dark">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-dark" type="button">Button</button>
+  </div>
+</div>
+<br>
+<div class="container text-center">
+    <div class="row">
+        <div class="card-columns">
+        {% for movie in object_list %}
+            <div class="card text-white border-warning bg-dark mb-3" style="padding: 0px;">
+              <h5 class="card-header">{{ movie.primaryTitle }} <span class="badge badge-warning">{{ movie.genres }}</span></h5>
+              <div class="card-body">
+                <p class="card-text">Release year: {{ movie.startYear }}<br>Length: {{ movie.runtimeMinutes }} minutes</p>
+                <a href="{% url 'movie-detail' movie.id %}" class="btn btn-outline-warning">More details</a>
+              </div>
+            </div>
+            <br>
+        {% empty %}
+            <h5>No movies yet.</h5>
+        {% endfor %}\
+        </div>
+    </div>
+</div>
+<br>
+<div class="container d-flex justify-content-center">
+    {% if is_paginated %}
+    {% if page_obj.has_previous %}
+        <a href="?page=1" class="btn btn-outline-dark mb-4">First</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+            <a href="?page={{ num }}" class="btn btn-dark mb-4">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a href="?page={{ num }}" class="btn btn-outline-dark mb-4">{{ num }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-dark mb-4">Last</a>
+    {% endif %}
+
+{% endif %}
+</div>
+{% endblock content %}
