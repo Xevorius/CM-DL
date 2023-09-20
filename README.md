@@ -1,27 +1,27 @@
-## CM-DL
+# CM-DL
 Code for our 'Content recommendation system'.
 
 Content Management and Digital Library: Group 3
 
-Live website: http://xevorius.pythonanywhere.com/
+[Live website](http://xevorius.pythonanywhere.com/)
 
 
-Requirements:
-Python 3.10
+__Requirements__:
+* Python 3.10
 
-Libraries:
-* django
-* django-bootstrap-daterangepicker
-* django-crispy-forms
-* django-import-export
-* django-multiselectfield
-* crispy-bootstrap4
-* pillow
+__Libraries__:
+* _django_
+* _django-bootstrap-daterangepicker_
+* _django-crispy-forms_
+* _django-import-export_
+* _django-multiselectfield_
+* _crispy-bootstrap4_
+* _pillow_
 
 
 Command to run server locally:
-(Be sure that you are in the first TimeCollections folder)
-```python
+(Be sure that you are in the first TimCollections folder)
+```shell
 python manage.py runserver
 ```
 
