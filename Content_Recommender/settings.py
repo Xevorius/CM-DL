@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'collection.apps.CollectionConfig',
     'movies.apps.MoviesConfig',
-
+    'crispy_bootstrap4',
     'crispy_forms',
     'import_export',
     'bootstrap_daterangepicker',
