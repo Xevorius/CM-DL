@@ -26,5 +26,7 @@ class MovieListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        if self.request.GET.get('name'):
+            context['name'] = self.request.GET.get('name')
         context["now"] = timezone.now()
         return context
