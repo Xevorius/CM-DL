@@ -1,0 +1,6 @@
+# ignore ALL .log files
+
+Content_recommender/settings.py
+db.sqlite3
+__pycache__/
+*.pyc
