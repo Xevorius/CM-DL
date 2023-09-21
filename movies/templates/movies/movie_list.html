@@ -15,7 +15,7 @@
             <div class="card text-white border-warning bg-dark mb-3" style="padding: 0px;">
               <h5 class="card-header">{{ movie.primaryTitle }} <span class="badge badge-warning">{{ movie.genres }}</span></h5>
               <div class="card-body">
-                <p class="card-text">Release year: {{ movie.startYear }}<br>Length: {{ movie.runtimeMinutes }} minute{{ movie.runtimeMinutes|pluralize }}</p>
+                <p class="card-text">{% lorem 20 w random %}</p>
                 <a href="{% url 'movie-detail' movie.id %}" class="btn btn-outline-warning">More details</a>
               </div>
             </div>
