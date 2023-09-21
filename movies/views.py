@@ -1,6 +1,7 @@
 from django.utils import timezone
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
+from django.db.models import Q
 
 from movies.models import Movie
 
@@ -21,7 +22,7 @@ class MovieListView(ListView):
     def get_queryset(self):
         query = self.request.GET.get('name')
         if query:
-            return self.model.objects.filter(primaryTitle__icontains=query)
+            return self.model.objects.filter(Q(primaryTitle__icontains=query) | Q(genres__icontains=query))
         return self.model.objects.all()
 
     def get_context_data(self, **kwargs):
