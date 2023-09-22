@@ -5,7 +5,8 @@ from .models import Profile
 
 
 class UserRegisterForm(UserCreationForm):
-    email = forms.EmailField()
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'border-warning bg-dark text-white'}))
+    email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'border-warning bg-dark text-white'}))
 
     class Meta:
         model = User
@@ -13,7 +14,8 @@ class UserRegisterForm(UserCreationForm):
 
 
 class UserUpdateForm(forms.ModelForm):
-    email = forms.EmailField()
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'border-warning bg-dark text-white'}))
+    email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'border-warning bg-dark text-white'}))
 
     class Meta:
         model = User
@@ -21,6 +23,8 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
+    image = forms.Field(widget=forms.ClearableFileInput(attrs={'class': 'btn btn-outline-warning bg-dark text-white'}))
+
     class Meta:
         model = Profile
         fields = ['image']

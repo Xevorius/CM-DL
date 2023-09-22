@@ -70,16 +70,16 @@ __status__ = "Development"-->
                         <a role="button" class=""
                            style="padding: 0px; background: transparent; border: none !important;"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle article-img" style="height: 40px; width: 40px;"
+                            <img class="rounded-circle border border-warning article-img" style="height: 40px; width: 40px;"
                                  src="{{ user.profile.image.url }}">
                         </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                        <div class="dropdown-menu dropdown-menu-dark border-warning bg-dark">
+                            <a class="dropdown-item dropdown-item-dark border-warning bg-dark text-white" href="{% url 'profile' %}">Profile</a>
                             {% if user.is_superuser %}
-                            <a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a>
+                            <a class="dropdown-item dropdown-item-dark border-warning bg-dark text-white" href="{% url 'admin:index' %}">Admin</a>
                             {% endif %}
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                            <div class="dropdown-divider border-warning"></div>
+                            <a class="dropdown-item dropdown-item-dark border-warning bg-dark text-white" href="{% url 'logout' %}">Logout</a>
                         </div>
                     </div>
                     {% else %}
