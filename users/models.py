@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
@@ -24,3 +25,4 @@ class Profile(models.Model):
             output_size = (300, 300)
             cropped_img.thumbnail(output_size)
             cropped_img.save(self.image.path)
+

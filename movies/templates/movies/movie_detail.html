@@ -1,10 +1,31 @@
 {% extends "collection/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 <div class="container text-center">
     <div class="text-white border-warning bg-dark mb-3" style="padding: 0px;">
-      <h5 class="card-header">{{ object.primaryTitle }} <span class="badge badge-warning">{{ object.genres }}</span></h5>
-      <div class="card-body">
-        <p class="card-text">Release year: {{ object.startYear }}<br>Length: {{ object.runtimeMinutes }} minute{{ object.runtimeMinutes|pluralize }}<br>Type: {{ object.titleType  }}<br>18+: {{ object.isAdult }}</p>
+        <h5 class="card-header">{{ object.primaryTitle }} <span class="badge badge-warning">{{ object.genres }}</span></h5>
+        <div class="card-body">
+            <p class="card-text">Release year: {{ object.startYear }}<br>Length: {{ object.runtimeMinutes }} minute{{ object.runtimeMinutes|pluralize }}<br>Type: {{ object.titleType  }}<br>18+: {{ object.isAdult }}</p>
+            {% if user.is_authenticated %}
+                {% if user_rating %}
+                <h1>Your score: {{ user_rating }}</h1>
+                {% else %}
+                <form method='POST'>
+                {% csrf_token %}
+                    <div class="input-group mb-3 text-white border-warning bg-dark">
+                        {{ form|crispy }}
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-warning" type="submit">Add Rating</button>
+                        </div>
+                    </div>
+                </form>
+                {% endif %}
+            {% else %}
+            <div class="text-secondary">Add a rating: <a class="" href="{% url 'login' %}">Login</a></div>
+            {% endif %}
+            {% if object.average_rating %}
+                <div class="text-secondary">Average score: {{object.average_rating | stringformat:".2f"}} ({{object.count_ratings}})</div>
+            {% endif %}
       </div>
     </div>
     <br>

@@ -131,9 +131,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # default static files settings for PythonAnywhere.
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
-MEDIA_ROOT = '/home/Xevorius/Content_Recommender/media'
+# MEDIA_ROOT = '/home/Xevorius/Content_Recommender/media'
+MEDIA_ROOT = 'C:/Users/timis/CM-DL/media'
 MEDIA_URL = '/media/'
-STATIC_ROOT = '/home/Xevorius/Content_Recommender/static'
+# STATIC_ROOT = '/home/Xevorius/Content_Recommender/static'
+STATIC_ROOT = 'C:/Users/timis/CM-DL/static'
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
