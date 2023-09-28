@@ -7,8 +7,8 @@ from .models import Profile
 
 
 class UserRegisterForm(UserCreationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'border-warning bg-dark text-white'}))
-    email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'border-warning bg-dark text-white'}))
+    # username = forms.CharField(widget=forms.TextInput(attrs={'class': 'border-warning bg-dark text-white'}))
+    # email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'border-warning bg-dark text-white'}))
 
     class Meta:
         model = User
