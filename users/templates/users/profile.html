@@ -24,6 +24,14 @@
             </div>
         </form>
     </div>
+    {% if books %}
+    <h3 class="text-white">Books you wrote:</h3>
+    {% for book in books %}
+    <a class="text-white border-warning bg-dark" href="{% url 'book-detail' book.book.id %}">
+        <li class="list-group-item text-white border-warning bg-dark"><span><img src="{{book.book.imageUrl}}" style="width: 50px;"></span>  {{ book.book.bookTitle }}</li>
+    </a>
+    {% endfor %}
+    {% endif %}
 
 
 

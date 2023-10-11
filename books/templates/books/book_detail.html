@@ -1,0 +1,46 @@
+{% extends "collection/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container text-center">
+    <div class="text-white border-warning bg-dark mb-3" style="padding: 0px;">
+        <h5 class="card-header">{{ object.bookTitle }} - <a href="{% url 'user-detail' author.id %}" class="text-white">{{ author }}</a> {% if object.genres %} <span class="badge badge-warning">{{ object.genres }}</span> {% endif %}
+        </h5>
+        <br>
+        <div class="row">
+                    <div class="col-md-6">
+            <img class="card-img-top" src="{{object.imageUrl}}" alt="Card image cap" style="width: 350px;">
+        </div>
+        <div class="col-md-6">
+            <div class="card-body">
+                <p class="card-text">This book was published by <a href="{% url 'publisher-detail' publisher.id %}" class="text-white">{{ publisher.publisherName }}</a> in the year {{ object.yearOfPublication }}</p>
+            </div>
+                        {% if user.is_authenticated %}
+            {% if user_rating %}
+        <h1>Your score: {{ user_rating }}</h1>
+        {% else %}
+        <form method='POST'>
+            {% csrf_token %}
+            <div class="input-group mb-3 text-white border-warning bg-dark">
+                {{ form|crispy }}
+                <div class="input-group-append">
+                    <button class="btn btn-outline-warning" type="submit">Add Rating</button>
+                </div>
+            </div>
+        </form>
+        {% endif %}
+        {% else %}
+        <div class="text-secondary">Add a rating: <a class="" href="{% url 'login' %}">Login</a></div>
+        {% endif %}
+        {% if object.average_rating %}
+        <div class="text-secondary">Average score: {{object.average_rating | stringformat:".2f"}}
+            ({{object.count_ratings}})
+        </div>
+        {% endif %}
+        </div>
+        </div>
+        <br>
+    </div>
+</div>
+<br>
+</div>
+{% endblock content %}

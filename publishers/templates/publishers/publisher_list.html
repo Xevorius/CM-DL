@@ -1,0 +1,74 @@
+{% extends "collection/base.html" %}
+{% block content %}
+
+<div class="container">
+    <form method='GET'>
+        <div class="input-group mb-3 text-white border-warning bg-dark">
+            <input type="text" class="form-control" name="name" placeholder="Search for publishers" aria-label="Movie name" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-warning" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+    <br>
+    {% if name %}
+    <h3 class="text-secondary">Search results for <b class="text-warning">"{{ name }}"</b>:</h3>
+    {% endif %}
+    <div class="row">
+        <div class="card-columns text-center">
+        {% for publisher in object_list %}
+            <a href="{% url 'publisher-detail' publisher.id %}">
+            <div class="card text-white border-warning bg-dark mb-3" style="padding: 0px;">
+                <h5 class="card-header">{{publisher.publisherName}}</h5>
+                <img class="card-img-top" src="/media/publisher.png" alt="Card image cap">
+            </div>
+            </a>
+            <br>
+        {% empty %}
+            <h5>No books yet.</h5>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+<br>
+<div class="container d-flex justify-content-center">
+    {% if name %}
+    {% if is_paginated %}
+    {% if page_obj.has_previous %}
+        <a href="?name={{ name }}&page=1" class="btn btn-outline-warning mb-4">First</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+            <a href="?name={{ name }}&page={{ num }}" class="btn btn-warning mb-4">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a href="?name={{ name }}&page={{ num }}" class="btn btn-outline-warning mb-4">{{ num }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <a href="?name={{ name }}&page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-warning mb-4">Last</a>
+    {% endif %}
+    {% endif %}
+    {% else %}
+
+    {% if is_paginated %}
+    {% if page_obj.has_previous %}
+        <a href="?page=1" class="btn btn-outline-warning mb-4">First</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+            <a href="?page={{ num }}" class="btn btn-warning mb-4">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a href="?page={{ num }}" class="btn btn-outline-warning mb-4">{{ num }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-warning mb-4">Last</a>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+</div>
+{% endblock content %}

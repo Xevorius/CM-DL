@@ -1,0 +1,36 @@
+{% extends "collection/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="text-white border-warning bg-dark mb-3" style="padding: 0px;">
+        <h5 class="card-header text-center">{{ object.publisherName }}</h5>
+        <br>
+        <div class="row">
+                    <div class="col-md-6 text-center">
+            <img class="card-img-top" src="/media/publisher.png" alt="Card image cap" style="width: 350px;">
+        </div>
+        <div class="col-md-6">
+            {% if books %}
+            <h4>{{ publisher.publisherName }} published {{ books|length }} books:</h4>
+            <div class="card-body">
+                  <ul class="list-group list-group-flush list-group-item text-white border-warning bg-dark">
+                      {% for book in books %}
+                      <a class="text-white border-warning bg-dark" href="{% url 'book-detail' book.book.id %}">
+                        <li class="list-group-item text-white border-warning bg-dark"><span><img src="{{book.book.imageUrl}}" style="width: 50px;"></span>  {{ book.book.bookTitle }}</li>
+                      </a>
+                      {% endfor %}
+                  </ul>
+
+            </div>
+            {% else %}
+            <h2>{{user.username}} hasn't written any books</h2>
+            {% endif %}
+        </div>
+        </div>
+        <br>
+    </div>
+</div>
+<br>
+</div>
+{% endblock content %}

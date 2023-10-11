@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'collection.apps.CollectionConfig',
     'movies.apps.MoviesConfig',
+    'publishers.apps.PublishersConfig',
+    'books.apps.BooksConfig',
     'crispy_bootstrap4',
     'crispy_forms',
     'import_export',
@@ -140,8 +142,8 @@ STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'movie-list'
+LOGIN_REDIRECT_URL = 'book-list'
 
-LOGOUT_REDIRECT_URL = 'movie-list'
+LOGOUT_REDIRECT_URL = 'book-list'
 
 LOGIN_URL = 'login'

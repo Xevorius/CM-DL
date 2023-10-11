@@ -1,21 +1,23 @@
+from django.contrib.auth.models import User
 from django.utils import timezone
 from django.views.generic import ListView
 from django.shortcuts import redirect
 from django.views.generic.detail import DetailView
 from django.db.models import Q
 
-from movies.models import Movie, MovieRating
-from users.forms import GiveMovieRatingForm
+from books.models import Book, BookRating, BookAuthor
+from publishers.models import BookPublisher, Publisher
+from users.forms import GiveBookRatingForm
 
 
-class MovieDetailView(DetailView):
-    model = Movie
+class BookDetailView(DetailView):
+    model = Book
 
     def post(self, request, *args, **kwargs):
-        form = GiveMovieRatingForm(request.POST)
+        form = GiveBookRatingForm(request.POST)
         if form.is_valid():
             form.instance.user = self.request.user
-            form.instance.movie = Movie.objects.get(pk=self.kwargs['pk'])
+            form.instance.book = Book.objects.get(pk=self.kwargs['pk'])
             form.save()
         return redirect(request.path)
 
@@ -23,21 +25,23 @@ class MovieDetailView(DetailView):
 
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
-            if i := MovieRating.objects.filter(movie=self.kwargs['pk']).filter(user=self.request.user).first():
+            if i := BookRating.objects.filter(book=self.kwargs['pk']).filter(user=self.request.user).first():
                 context['user_rating'] = getattr(i, 'rating')
+        context['author'] = User.objects.get(pk=getattr(BookAuthor.objects.filter(book=self.kwargs['pk']).first(), 'author_id'))
+        context['publisher'] = Publisher.objects.get(pk=getattr(BookPublisher.objects.filter(book=self.kwargs['pk']).first(), 'publisher_id'))
         context["now"] = timezone.now()
-        context["form"] = GiveMovieRatingForm()
+        context["form"] = GiveBookRatingForm()
         return context
 
 
-class MovieListView(ListView):
-    model = Movie
-    paginate_by = 12  # if pagination is desired
+class BookListView(ListView):
+    model = Book
+    paginate_by = 12
 
     def get_queryset(self):
         query = self.request.GET.get('name')
         if query:
-            return self.model.objects.filter(Q(primaryTitle__icontains=query) | Q(genres__icontains=query))
+            return self.model.objects.filter(Q(bookTitle__icontains=query))
         return self.model.objects.all()
 
     def get_context_data(self, **kwargs):

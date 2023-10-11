@@ -1,19 +1,15 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
 
-from books.models import Book, BookRating, BookAuthor
+from publishers.models import Publisher, BookPublisher
 
 
-@admin.register(Book)
+@admin.register(Publisher)
 class PersonAdmin(ImportExportModelAdmin):
     pass
 
 
-@admin.register(BookAuthor)
+@admin.register(BookPublisher)
 class PersonAdmin(ImportExportModelAdmin):
     pass
-
-
-admin.site.register(BookRating)
-
 

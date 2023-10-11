@@ -2,7 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
-from movies.models import Rating
+from books.models import BookRating
+from movies.models import MovieRating
 from .models import Profile
 
 
@@ -32,9 +33,17 @@ class ProfileUpdateForm(forms.ModelForm):
         fields = ['image']
 
 
-class GiveRatingForm(forms.ModelForm):
+class GiveMovieRatingForm(forms.ModelForm):
     rating = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'border-warning bg-dark text-white'}))
 
     class Meta:
-        model = Rating
+        model = MovieRating
+        fields = ['rating']
+
+
+class GiveBookRatingForm(forms.ModelForm):
+    rating = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'border-warning bg-dark text-white'}))
+
+    class Meta:
+        model = BookRating
         fields = ['rating']

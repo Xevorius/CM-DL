@@ -55,12 +55,17 @@ __status__ = "Development"-->
 <section class="is-fullheight" style="overflow: hidden">
     <nav class="navbar navbar-dark navbar-expand-md bg-dark">
         <div class="container">
-            <a class="navbar-brand mr-4" href="{% url 'movie-list' %}">Movie recommender</a>
+            <a class="navbar-brand mr-4" href="{% url 'book-list' %}">Recommendation engine</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
                     aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarToggle">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'publisher-list' %}">Publishers</a>
+                  </li>
+                </ul>
                 <div class="navbar-nav mr-auto">
 <!--                    <a class="nav-item nav-link" href="#">NASA/MRMS</a>-->
                 </div>

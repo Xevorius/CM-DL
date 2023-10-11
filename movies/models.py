@@ -16,19 +16,19 @@ class Movie(models.Model):
     genres = models.CharField(max_length=100)
 
     def average_rating(self):
-        rating = Rating.objects.filter(movie=self).aggregate(avarage=Avg('rating'))
+        rating = MovieRating.objects.filter(movie=self).aggregate(avarage=Avg('rating'))
         if rating["avarage"] is not None:
             return float(rating["avarage"])
         return 0
 
     def count_ratings(self):
-        reviews = Rating.objects.filter(movie=self).aggregate(count=Count('id'))
+        reviews = MovieRating.objects.filter(movie=self).aggregate(count=Count('id'))
         if reviews["count"] is not None:
             return int(reviews["count"])
         return 0
 
 
-class Rating(models.Model):
+class MovieRating(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     rating = models.IntegerField(default=0, validators=[MaxValueValidator(10), MinValueValidator(0)])
