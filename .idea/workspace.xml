@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bf7718c-404e-4019-b376-6cc3b45a76bf" name="Changes" comment="Adding simple rating system">
-      <change afterPath="$PROJECT_DIR$/books/templates/books/book_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/books/templates/books/book_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/books/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/publishers/templates/publishers/publisher_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/publishers/templates/publishers/publisher_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/publishers/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/templates/user_page.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content_Recommender/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Content_Recommender/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content_Recommender/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Content_Recommender/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/collection/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/collection/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/collection/templates/collection/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/collection/templates/collection/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/movies/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/user_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/user_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

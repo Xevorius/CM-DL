@@ -51,7 +51,7 @@ def profile(request):
 
 
 def user_detail(request, pk):
-    context = {'user': User.objects.get(pk=int(pk)), 'books': BookAuthor.objects.filter(author_id=pk), 'profile': Profile.objects.get(user=pk)}
+    context = {'author': User.objects.get(pk=int(pk)), 'books': BookAuthor.objects.filter(author_id=pk), 'author_profile': Profile.objects.get(user=pk)}
     return render(request, 'user_page.html', context)
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
