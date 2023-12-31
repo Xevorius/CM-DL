@@ -1,7 +1,13 @@
-from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
+
+
+def user_representation(self):
+    return f"{self.id} - {self.first_name}"
+
+
+User.add_to_class("__str__", user_representation)
 
 
 class Profile(models.Model):

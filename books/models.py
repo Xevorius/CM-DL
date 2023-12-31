@@ -27,14 +27,23 @@ class Book(models.Model):
             return int(reviews["count"])
         return 0
 
+    def __str__(self):
+        return f"{self.id} - {self.bookTitle}"
+
 
 class BookRating(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     rating = models.IntegerField(default=0, validators=[MaxValueValidator(10), MinValueValidator(0)])
 
+    def __str__(self):
+        return f"{self.user} - {self.book}"
+
 
 class BookAuthor(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.book} - {self.author}"
 

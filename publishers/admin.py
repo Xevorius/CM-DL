@@ -5,11 +5,11 @@ from publishers.models import Publisher, BookPublisher
 
 
 @admin.register(Publisher)
-class PersonAdmin(ImportExportModelAdmin):
-    pass
+class PublisherAdmin(ImportExportModelAdmin):
+    readonly_fields = ('id',)
 
 
 @admin.register(BookPublisher)
-class PersonAdmin(ImportExportModelAdmin):
+class BookPublisherAdmin(ImportExportModelAdmin):
     pass
 

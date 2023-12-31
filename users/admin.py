@@ -13,11 +13,14 @@ class UserResource(resources.ModelResource):
         fields = ('id', 'username', 'password', 'first_name', 'last_name', 'email')
 
 
-class UserAdmin(ImportExportModelAdmin, UserAdmin):
-    resource_class = UserResource
-    pass
-
-
 admin.site.unregister(User)
-admin.site.register(User, UserAdmin)
+
+
+@admin.register(User)
+class UserMixinAdmin(ImportExportModelAdmin, UserAdmin):
+    resource_class = UserResource
+    readonly_fields = ('id',)
+
+
+# admin.site.register(User, UserMixinAdmin)
 admin.site.register(Profile)

@@ -140,6 +140,8 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = 'C:/Users/timis/CM-DL/static'
 STATIC_URL = '/static/'
 
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 50000
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'book-list'

@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container text-center">
     <div class="text-white border-warning bg-dark mb-3" style="padding: 0px;">
-        <h5 class="card-header">{{ object.bookTitle }} - <a href="{% url 'user-detail' author.id %}" class="text-white">{{ author }}</a> {% if object.genres %} <span class="badge badge-warning">{{ object.genres }}</span> {% endif %}
+        <h5 class="card-header">{{ object.bookTitle }} - <a href="{% url 'user-detail' author.id %}" class="text-white">{{ author.username }}</a> {% if object.genres %} <span class="badge badge-warning">{{ object.genres }}</span> {% endif %}
         </h5>
         <br>
         <div class="row">
